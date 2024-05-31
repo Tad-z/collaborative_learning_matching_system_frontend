@@ -49,17 +49,17 @@ export default function SignupScreen() {
   };
 
   return (
-    <div className={styles.body}>
+    <div className="body">
       <Header title="signup" />
-      <div className={styles.container}>
-        <h1 className={styles.h1}>
+      <div className="container">
+        <h1 className="h1">
           Create an Account
         </h1>
-        <p className={styles.p}>Personal Information</p>
-        <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-          <div className={styles.column}>
-            <label htmlFor="username" className={styles.label}>
-              Username&nbsp;<span className="text-red-600">*</span>
+        <p className="p">Personal Information</p>
+        <form className="form" onSubmit={handleSubmit(submitHandler)}>
+          <div className="column">
+            <label htmlFor="username" className="label">
+              Full Name&nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -67,10 +67,10 @@ export default function SignupScreen() {
                 required: "Please enter a valid username",
                 minLength: {
                   value: 4,
-                  message: "Username should have minimum of 4 characters",
+                  message: "Name should have minimum of 4 characters",
                 },
               })}
-              className={styles.input}
+              className="input"
               id="username"
               autoFocus
             />
