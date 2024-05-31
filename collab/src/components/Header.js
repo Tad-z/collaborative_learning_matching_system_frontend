@@ -1,15 +1,16 @@
 import React from 'react'
 import './Header.css'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <header>
             <div className="navbar">
                 <div>
-                    <p href="/" className='text-2xl font-bold'>CollabLearn</p>
+                    <Link to="/" className='text-2xl font-bold'>CollabLearn</Link>
                 </div>
                 <div>
-                    <p href="/" className='loginButton text-sm'>Get Started</p>
+                    <Link to="/login" className='loginButton text-sm text-white'>Get Started</Link>
                 </div>
             </div>
         </header>

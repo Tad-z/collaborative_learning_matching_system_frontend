@@ -1,0 +1,203 @@
+.container,
+.container:before,
+.container:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+.body{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+        135deg,
+        #f3f3eb,
+        #f7f7f1
+    );
+}
+.container{
+    background-color: #ffffff;
+    width: 50%;
+    min-width: 390px;
+    padding: 35px 50px;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 20px 30px 25px rgba(0,0,0,0.15);
+}
+.h1{
+    font-size: 30px;
+    text-align: center;
+    color: #1c093c;
+    letter-spacing: -2px;
+}
+.p{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #313030;
+    font-size: 14px;
+    font-weight: 400;
+}
+.form{
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0 auto;
+}
+.row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    row-gap: 20px;
+    column-gap: 30px;
+    margin-bottom: 20px;
+}
+.label{
+    color: #0e0d0d;
+    font-size: 14px;
+}
+
+.input {
+    width: 100%;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #1a1a1b;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+.pswInput {
+    width: 100%;
+    position: relative;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #1a1a1b;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+.SignInputIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 70%;
+    right: 10px;
+    color: #1a1a1b;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.LogInputIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 51%;
+    right: 10px;
+    color: #1a1a1b;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+.button {
+    border: none;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(
+        130deg,
+        #9f7d4e,
+        #a98c61
+    );
+    color: #f7f7f1;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.button:hover,
+.button:active {
+    background: linear-gradient(
+        130deg,
+        #856434,
+        #946F3A
+    );
+}
+
+.blurButton {
+    opacity: 0.8; 
+    pointer-events: none; 
+    border: none;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(
+        130deg,
+        #9f7d4e,
+        #a98c61
+    );
+    color: #f7f7f1;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+.link {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #9f7d4e;
+}
+
+.link:hover,
+.link:active {
+    text-decoration: none;
+    font-weight: 400;
+    color: #946F3A;
+}
+
+.series {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.seriesButton {
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    width: 11rem;
+    background: linear-gradient(
+        120deg,
+        #313030,
+        #252525
+    );
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border: none;
+    box-shadow: 0 0 0 2px #24234d;
+    outline: none;
+}
+
+.seriesButton:hover {
+    background: linear-gradient(
+        120deg,
+        #353535,
+        #1b1b1b
+    );
+}
+.seriesButton:active {
+    background: linear-gradient(
+        120deg,
+        #313030,
+        #252525
+    );
+    transform: translateY(2px);
+}
