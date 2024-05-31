@@ -78,13 +78,13 @@ export default function SignupScreen() {
               <div className="text-red-500">{errors.username.message}</div>
             )}
           </div>
-          <div className={styles.column}>
-            <label htmlFor="email" className={styles.label}>
+          <div className="column">
+            <label htmlFor="email" className="label">
               Email&nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type="email"
-              className={styles.input}
+              className="input"
               {...register("email", {
                 required: "Please enter your email address",
                 pattern: {
@@ -99,13 +99,13 @@ export default function SignupScreen() {
               <div className="text-red-500">{errors.email.message}</div>
             )}
           </div>
-          <div className={styles.column}>
-            <label htmlFor="password" className={styles.label}>
+          <div className="column">
+            <label htmlFor="password" className="label">
               Password &nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type={showPassword ? "text" : "password"}
-              className={styles.pswInput}
+              className="pswInput"
               {...register("password", {
                 required: "Please enter a strong password",
                 minLength: {
@@ -116,7 +116,7 @@ export default function SignupScreen() {
               id="password"
               autoFocus
             />
-            <div className={styles.SignInputIcon} onClick={handleTogglePassword}>
+            <div className="SignInputIcon" onClick={handleTogglePassword}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </div>
             {errors.password && (
@@ -124,7 +124,7 @@ export default function SignupScreen() {
             )}
           </div>
           <div className="flex justify-center">
-            <button className={`${isLoading ? styles.blurButton : styles.button}`}>
+            <button className={`${isLoading ? "blurButton" : "button"}`}>
               {isLoading ? "Loading..." : "Sign Up"}
             </button>
           </div>
