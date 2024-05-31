@@ -19,27 +19,27 @@ export default function SignupScreen() {
   } = useForm();
 
   const submitHandler = async ({ email, username, password }) => {
-    try {
-      setIsLoading(true);
-      const result = await ApiCall.postMethod(
-        "https://emaxapi.onrender.com/user/signup",
-        {
-          username,
-          email,
-          password,
-        }
-      );
-      if (result) {
-        toast("You have signed up");
-      } else {
-        toast.error("Something went wrong");
-      }
-      router.push('/login')
-    } catch (err) {
-      toast.error(getError(err));
-    } finally {
-      setIsLoading(false);
-    }
+    // try {
+    //   setIsLoading(true);
+    //   const result = await ApiCall.postMethod(
+    //     "https://emaxapi.onrender.com/user/signup",
+    //     {
+    //       username,
+    //       email,
+    //       password,
+    //     }
+    //   );
+    //   if (result) {
+    //     toast("You have signed up");
+    //   } else {
+    //     toast.error("Something went wrong");
+    //   }
+    //   router.push('/login')
+    // } catch (err) {
+    //   toast.error(getError(err));
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
   
   const [showPassword, setShowPassword] = useState(false);
