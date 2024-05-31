@@ -11,7 +11,6 @@ import "./Login.css";
 
 export default function SignupScreen() {
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
   const {
     handleSubmit,
     register,
