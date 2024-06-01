@@ -18,7 +18,7 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
 
-//   const router = useRouter();
+
   const submitHandler = async (data) => {
     // try {
     //     const formData = new FormData();
