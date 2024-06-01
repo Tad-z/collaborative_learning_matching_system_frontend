@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { useForm } from "react-hook-form";
-// import ApiCall from "./api/helper";
+import ApiCall from "../helpers/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { getError } from "../reducers/error";
+import { getError } from "../helpers/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
@@ -17,28 +17,28 @@ export default function SignupScreen() {
     formState: { errors },
   } = useForm();
 
-  const submitHandler = async ({ email, username, password }) => {
-    // try {
-    //   setIsLoading(true);
-    //   const result = await ApiCall.postMethod(
-    //     "https://emaxapi.onrender.com/user/signup",
-    //     {
-    //       username,
-    //       email,
-    //       password,
-    //     }
-    //   );
-    //   if (result) {
-    //     toast("You have signed up");
-    //   } else {
-    //     toast.error("Something went wrong");
-    //   }
-    //   router.push('/login')
-    // } catch (err) {
-    //   toast.error(getError(err));
-    // } finally {
-    //   setIsLoading(false);
-    // }
+  const submitHandler = async ({ email, fullname, password }) => {
+    try {
+      setIsLoading(true);
+      const result = await ApiCall.postMethod(
+        "http://localhost:8000/user/register",
+        {
+          fullname,
+          email,
+          password,
+        }
+      );
+      if (result) {
+        toast("You have signed up");
+      } else {
+        toast.error("Something went wrong");
+      }
+      // router.push('/login')
+    } catch (err) {
+      toast.error(getError(err));
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   const [showPassword, setShowPassword] = useState(false);
@@ -57,12 +57,12 @@ export default function SignupScreen() {
         <p className="p">Personal Information</p>
         <form className="form" onSubmit={handleSubmit(submitHandler)}>
           <div className="column">
-            <label htmlFor="username" className="label">
+            <label htmlFor="fullname" className="label">
               Full Name&nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type="text"
-              {...register("username", {
+              {...register("fullname", {
                 required: "Please enter a valid username",
                 minLength: {
                   value: 4,
@@ -70,11 +70,11 @@ export default function SignupScreen() {
                 },
               })}
               className="input"
-              id="username"
+              id="fullname"
               autoFocus
             />
-            {errors.username && (
-              <div className="text-red-500">{errors.username.message}</div>
+            {errors.fullname && (
+              <div className="text-red-500">{errors.fullname.message}</div>
             )}
           </div>
           <div className="column">
