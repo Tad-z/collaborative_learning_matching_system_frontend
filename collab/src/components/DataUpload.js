@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 import { useForm } from "react-hook-form";
-// import ApiCall from "./api/helper";
-import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import { getError } from "../reducers/error";
-// import { useRouter } from "next/router";
+import ApiCall, { getError } from "../helpers/api";
+import Header from "./Header";
 import "./Login.css";
 
-export default function LoginScreen() {
+export default function UploadScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
@@ -16,29 +14,42 @@ export default function LoginScreen() {
     reset,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Please log in first");
+      navigate("/login");
+    }
+  }, [navigate]);
 
 
   const submitHandler = async (data) => {
-    // try {
-    //     const formData = new FormData();
-    //     formData.append("file", data.file[0]);
-    //     formData.append("title", data.title);
-    //     const response = await postServerData(
-    //       `https://series-api-nld9.onrender.com/series`,
-    //       formData
-    //     );
-    //     if (response) {
-    //       toast.success('Series added successfully');
-    //     } else {
-    //       toast.error('Something went wrong');
-    //     }
-    //     reset();
-    //     Router.push("/")
-        
-    //   } catch (error) {
-    //     console.log(error);
-    //     toast.error(getError(error));
-    //   }
+    e.preventDefault();
+    try {
+        const formData = new FormData();
+        formData.append("file", data.file[0]);
+        formData.append("title", data.title);
+        const response = await ApiCall.postMethod(
+          "http://localhost:8000/group/upload",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        if (response) {
+          toast.success('File Uploaded Sucessfully');
+        } else {
+          toast.error('File upload failed');
+        } 
+      } catch (error) {
+        console.log(error);
+        toast.error(getError(error));
+      }
   };
 
 
@@ -46,7 +57,7 @@ export default function LoginScreen() {
 
   return (
     <div className="body">
-      <Header title="login" />
+      <Header title="upload" />
       <div className="container">
         <h1 className="h1">Data Upload</h1>
         <p className="p">Upload your data</p>
