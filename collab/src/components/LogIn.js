@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 import { useForm } from "react-hook-form";
-// import ApiCall from "./api/helper";
-import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import { getError } from "../reducers/error";
-// import { useRouter } from "next/router";
-import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ApiCall, { getError } from "../helpers/api";
+import "./Login.css";
 
 export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,40 +15,8 @@ export default function LoginScreen() {
   } = useForm();
 
 //   const router = useRouter();
-  const submitHandler = async ({ username, password }) => {
-    // try {
-    //   setIsLoading(true);
-    //   const response = await ApiCall.postMethod(
-    //     "https://emaxapi.onrender.com/user/login",
-    //     {
-    //       username,
-    //       password,
-    //     }
-    //   );
+  const submitHandler = async ({ fullname, password }) => {
 
-    //   if (response) {
-    //     toast("You are logged in");
-    //     const data = response.data;
-    //     const { token } = data;
-    //     const { username } = data;
-    //     const tokenExpireTime = new Date().getTime() + 3600000;
-
-    //     // Store user data and token information
-    //     localStorage.setItem("username", username);
-    //     localStorage.setItem("token", token);
-    //     localStorage.setItem("isAuthenticated", true);
-    //     localStorage.setItem("tokenExpireTime", tokenExpireTime); // Store the token expiration time
-
-    //   } else {
-    //     toast.error("Something went wrong");
-    //   }
-    //   router.push("/");
-    // } catch (err) {
-    //   toast.error(getError(err));
-    //   console.error(err.message);
-    // } finally {
-    //   setIsLoading(false);
-    // }
   };
 
 
@@ -71,25 +36,25 @@ export default function LoginScreen() {
         <p className="p">Sign-In Information</p>
         <form className="form" onSubmit={handleSubmit(submitHandler)}>
           <div className="column">
-            <label htmlFor="username" className="label">
+            <label htmlFor="fullname" className="label">
               Full Name&nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type="text"
-              {...register("username", {
-                required: "Please enter a valid username",
+              {...register("fullname", {
+                required: "Please enter a valid name",
                 minLength: {
                   value: 4,
                   message: "Your name should have minimum of 4 characters",
                 },
               })}
               className="input"
-              name="username"
-              id="username"
+              name="fullname"
+              id="fullname"
               autoFocus
             />
-            {errors.username && (
-              <div className="text-red-500">{errors.username.message}</div>
+            {errors.fullname && (
+              <div className="text-red-500">{errors.fullname.message}</div>
             )}
           </div>
           <div className="column">
