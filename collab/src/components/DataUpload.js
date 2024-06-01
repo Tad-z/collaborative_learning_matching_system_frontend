@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 // import { getError } from "../reducers/error";
 // import { useRouter } from "next/router";
 import "./Login.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false);
