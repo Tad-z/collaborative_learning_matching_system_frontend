@@ -14,54 +14,36 @@ export default function LoginScreen() {
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm();
 
 //   const router = useRouter();
-  const submitHandler = async ({ username, password }) => {
+  const submitHandler = async (data) => {
     // try {
-    //   setIsLoading(true);
-    //   const response = await ApiCall.postMethod(
-    //     "https://emaxapi.onrender.com/user/login",
-    //     {
-    //       username,
-    //       password,
+    //     const formData = new FormData();
+    //     formData.append("file", data.file[0]);
+    //     formData.append("title", data.title);
+    //     const response = await postServerData(
+    //       `https://series-api-nld9.onrender.com/series`,
+    //       formData
+    //     );
+    //     if (response) {
+    //       toast.success('Series added successfully');
+    //     } else {
+    //       toast.error('Something went wrong');
     //     }
-    //   );
-
-    //   if (response) {
-    //     toast("You are logged in");
-    //     const data = response.data;
-    //     const { token } = data;
-    //     const { username } = data;
-    //     const tokenExpireTime = new Date().getTime() + 3600000;
-
-    //     // Store user data and token information
-    //     localStorage.setItem("username", username);
-    //     localStorage.setItem("token", token);
-    //     localStorage.setItem("isAuthenticated", true);
-    //     localStorage.setItem("tokenExpireTime", tokenExpireTime); // Store the token expiration time
-
-    //   } else {
-    //     toast.error("Something went wrong");
+    //     reset();
+    //     Router.push("/")
+        
+    //   } catch (error) {
+    //     console.log(error);
+    //     toast.error(getError(error));
     //   }
-    //   router.push("/");
-    // } catch (err) {
-    //   toast.error(getError(err));
-    //   console.error(err.message);
-    // } finally {
-    //   setIsLoading(false);
-    // }
   };
 
 
 
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <div className="body">
@@ -71,12 +53,12 @@ export default function LoginScreen() {
         <p className="p">Upload your data</p>
         <form className="form" onSubmit={handleSubmit(submitHandler)}>
           <div className="column">
-            <label htmlFor="username" className="label">
+            <label htmlFor="title" className="label">
               Title&nbsp;<span className="text-red-600">*</span>
             </label>
             <input
               type="text"
-              {...register("username", {
+              {...register("title", {
                 required: "Please enter a valid username",
                 minLength: {
                   value: 4,
@@ -84,12 +66,12 @@ export default function LoginScreen() {
                 },
               })}
               className="input"
-              name="username"
-              id="username"
+              name="title"
+              id="title"
               autoFocus
             />
             {errors.username && (
-              <div className="text-red-500">{errors.username.message}</div>
+              <div className="text-red-500">{errors.title.message}</div>
             )}
           </div>
           <div className="column">
