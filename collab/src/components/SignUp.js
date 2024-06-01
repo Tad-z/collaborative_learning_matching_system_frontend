@@ -1,46 +1,43 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 import { useForm } from "react-hook-form";
-import ApiCall from "../helpers/api";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { getError } from "../helpers/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./Login.css";
+import ApiCall, { getError } from "../helpers/api";
+import "./LogIn.css";
 
-
-export default function SignupScreen() {
+const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm();
 
   const submitHandler = async ({ email, fullname, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod(
-        "http://localhost:8000/user/register",
-        {
-          fullname,
-          email,
-          password,
-        }
-      );
+      const result = await ApiCall.postMethod("http://localhost:8000/user/register", {
+        fullname,
+        email,
+        password,
+      });
       if (result) {
-        toast("You have signed up");
+        toast.success("You have signed up");
+        reset();
+        navigate("/login"); // Redirect to login page after successful sign-up
       } else {
         toast.error("Something went wrong");
       }
-      // router.push('/login')
     } catch (err) {
       toast.error(getError(err));
     } finally {
       setIsLoading(false);
     }
   };
-  
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
@@ -49,11 +46,8 @@ export default function SignupScreen() {
 
   return (
     <div className="body">
-      <Header title="signup" />
       <div className="container">
-        <h1 className="h1">
-          Create an Account
-        </h1>
+        <h1 className="h1">Create an Account</h1>
         <p className="p">Personal Information</p>
         <form className="form" onSubmit={handleSubmit(submitHandler)}>
           <div className="column">
@@ -131,4 +125,6 @@ export default function SignupScreen() {
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;

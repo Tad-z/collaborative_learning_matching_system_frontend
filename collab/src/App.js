@@ -1,9 +1,11 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import Login from './components/LogIn';
-import DataUpload from './components/DataUpload'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -11,10 +13,10 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/upload" element={<DataUpload />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );
