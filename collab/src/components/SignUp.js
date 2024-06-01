@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ApiCall, { getError } from "../helpers/api";
+import Header from "./Header";
 import "./Login.css";
 
 const SignUp = () => {
@@ -46,6 +47,7 @@ const SignUp = () => {
 
   return (
     <div className="body">
+      <Header title="signup" />
       <div className="container">
         <h1 className="h1">Create an Account</h1>
         <p className="p">Personal Information</p>
