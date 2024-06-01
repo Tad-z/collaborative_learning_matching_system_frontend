@@ -75,7 +75,7 @@ export default function LoginScreen() {
           </div>
           <div className="column">
             <label className="label" htmlFor="file">
-                    Data
+                    Data&nbsp;<span className="text-red-600">*</span>
                 </label>
                 <input
                     {...register("file", { required: true })}
