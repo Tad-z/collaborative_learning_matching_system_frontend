@@ -10,9 +10,14 @@ export default class ApiCall {
       return null;
     }
   
-    static async postMethod(url, payload) {
-      return axios.post(url, payload);
-    }
+    static async postMethod(url, data, options = {}) {
+          const response = await axios.post(url, data, options);
+          if (response.status) {
+            return response.data;
+          }
+      
+          return null;
+      }
   }
 
 const getError = (err) =>

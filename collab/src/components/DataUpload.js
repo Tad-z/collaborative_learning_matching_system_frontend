@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -16,7 +16,6 @@ export default function UploadScreen() {
   } = useForm();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -25,35 +24,35 @@ export default function UploadScreen() {
     }
   }, [navigate]);
 
-
   const submitHandler = async (data) => {
-    e.preventDefault();
+    const token = localStorage.getItem("token")
+    console.log(token)
     try {
-        const formData = new FormData();
-        formData.append("file", data.file[0]);
-        formData.append("title", data.title);
-        const response = await ApiCall.postMethod(
-          "http://localhost:8000/group/upload",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        if (response) {
-          toast.success('File Uploaded Sucessfully');
-        } else {
-          toast.error('File upload failed');
-        } 
-      } catch (error) {
-        console.log(error);
-        toast.error(getError(error));
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append("file", data.file[0]);
+      formData.append("title", data.title);
+      const response = await ApiCall.postMethod(
+        "http://localhost:8000/group/balanced-groups/",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (response) {
+        toast.success("File Uploaded Successfully");
+        reset();
+      } else {
+        toast.error("File upload failed");
       }
+    } catch (error) {
+      toast.error(getError(error));
+    } finally {
+      setIsLoading(false);
+    }
   };
-
-
-
 
   return (
     <div className="body">
@@ -69,10 +68,10 @@ export default function UploadScreen() {
             <input
               type="text"
               {...register("title", {
-                required: "Please enter a valid username",
+                required: "Please enter a valid title",
                 minLength: {
                   value: 4,
-                  message: "Your name should have minimum of 4 characters",
+                  message: "Title should have a minimum of 4 characters",
                 },
               })}
               className="input"
@@ -80,23 +79,29 @@ export default function UploadScreen() {
               id="title"
               autoFocus
             />
-            {errors.username && (
+            {errors.title && (
               <div className="text-red-500">{errors.title.message}</div>
             )}
           </div>
           <div className="column">
             <label className="label" htmlFor="file">
-                    Data&nbsp;<span className="text-red-600">*</span>
-                </label>
-                <input
-                    {...register("file", { required: true })}
-                    className="input"
-                    type="file"
-                    id="file"
-                    placeholder="Insert file here"
-                />
+              Data&nbsp;<span className="text-red-600">*</span>
+            </label>
+            <input
+              {...register("file", { required: true })}
+              className="input"
+              type="file"
+              id="file"
+              placeholder="Insert file here"
+            />
+            {errors.file && (
+              <div className="text-red-500">File is required</div>
+            )}
           </div>
-          <button type="submit" className={`${isLoading ? "blurButton" : "button"}`}>
+          <button
+            type="submit"
+            className={`${isLoading ? "blurButton" : "button"}`}
+          >
             {isLoading ? "Loading..." : "Submit"}
           </button>
         </form>

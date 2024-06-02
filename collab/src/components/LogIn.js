@@ -19,13 +19,10 @@ export default function LoginScreen() {
   const submitHandler = async ({ email, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod(
-        "http://localhost:8000/user/login",
-        {
-          email,
-          password,
-        }
-      );
+      const result = await ApiCall.postMethod("http://localhost:8000/user/login", {
+        email,
+        password,
+      });
       if (result && result.data && result.data.access_token) {
         localStorage.setItem("token", result.data.access_token);
         localStorage.setItem("user", JSON.stringify(result.data.user));
@@ -100,12 +97,19 @@ export default function LoginScreen() {
               <div className="text-red-500">{errors.password.message}</div>
             )}
           </div>
-          <button type="submit" className={`${isLoading ? "blurButton" : "button"}`}>
+          <button
+            type="submit"
+            className={`${isLoading ? "blurButton" : "button"}`}
+          >
             {isLoading ? "Loading..." : "Login"}
           </button>
           <div className="mb-2 mt-3">
-            <p className="sm: text-sm">Don&apos;t have an account? &nbsp;
-              <a className="link" href="/signup">Create an account</a></p>
+            <p className="sm: text-sm">
+              Don&apos;t have an account? &nbsp;
+              <a className="link" href="/signup">
+                Create an account
+              </a>
+            </p>
           </div>
         </form>
       </div>
