@@ -44,6 +44,7 @@ export default function UploadScreen() {
       if (response) {
         toast.success("File Uploaded Successfully");
         reset();
+        navigate("/display");
       } else {
         toast.error("File upload failed");
       }
