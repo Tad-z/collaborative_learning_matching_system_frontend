@@ -23,9 +23,10 @@ export default function LoginScreen() {
         email,
         password,
       });
-      if (result && result.data && result.data.access_token) {
-        localStorage.setItem("token", result.data.access_token);
-        localStorage.setItem("user", JSON.stringify(result.data.user));
+      console.log(result.access_token)
+      if (result && result.access_token) {
+        localStorage.setItem("token", result.access_token);
+        // localStorage.setItem("user", JSON.stringify(result.data.user));
         toast.success("Login successful");
         navigate("/upload");
       } else {

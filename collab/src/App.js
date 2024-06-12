@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/upload" element={<DataUpload />} />
-          <Route path="/upload" element={<Display />} />
+          <Route path="/display" element={<Display />} />
         </Routes>
         <ToastContainer position="top-center" limit={1} autoClose={3000} />
       </div>
