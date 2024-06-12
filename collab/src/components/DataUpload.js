@@ -25,8 +25,7 @@ export default function UploadScreen() {
   }, [navigate]);
 
   const submitHandler = async (data) => {
-    const token = localStorage.getItem("token")
-    console.log(token)
+    const token = localStorage.getItem("token");
     try {
       setIsLoading(true);
       const formData = new FormData();
@@ -37,14 +36,14 @@ export default function UploadScreen() {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       if (response) {
         toast.success("File Uploaded Successfully");
         reset();
-        navigate("/display");
+        navigate("/display", { state: { response } }); // Pass the response data
       } else {
         toast.error("File upload failed");
       }
@@ -54,6 +53,7 @@ export default function UploadScreen() {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="body">
