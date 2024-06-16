@@ -6,7 +6,7 @@ const GroupList = ({ groups }) => {
     <div className="productContainer">
       {Object.keys(groups).map(groupName => (
         <div key={groupName} className="card">
-          <h3>{groupName}</h3>
+          <h3 className='font-semibold'>{groupName}</h3>
           <ul>
             {groups[groupName].map(student => (
               <li key={student.student_id}>

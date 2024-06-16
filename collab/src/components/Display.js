@@ -19,7 +19,7 @@ const Display = () => {
   return (
     <div>
       <HeaderAuth title={title} />
-      <h1>Groups</h1>
+      <h1 className='text-2xl font-bold text-center my-6'>Groups</h1>
       <div className='productContainer'>
         <GroupList groups={groups} />
       </div>
