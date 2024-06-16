@@ -1,23 +1,28 @@
-import React from 'react'
-import './Header.css'
+import React from 'react';
+import './Header.css';
 import { Link } from 'react-router-dom';
 import ApiCall, { getError } from '../helpers/api';
 import { toast } from 'react-toastify';
 
-
-
 const HeaderAuth = ({ title }) => {
-    const clickHandler = async ({ title }) => {
+    const clickHandler = async () => {
         try {
-            await ApiCall.getMethod("http://localhost:8000/group/download-groups/{title}")
-        } catch(err) {
-            toast.error(getError(err))
+            const response = await ApiCall.getMethod(`http://localhost:8000/group/download-groups/${title}`);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title}_groups.xlsx`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (err) {
+            toast.error(getError(err));
         }
-    }
+    };
 
     return (
         <header>
-            {/* <title>{title ? title + "-COLLAB" : "COLLAB"}</title> */}
             <div className="navbar">
                 <div>
                     <Link to="/" className='text-2xl font-bold'>CollabLearn</Link>
@@ -27,7 +32,7 @@ const HeaderAuth = ({ title }) => {
                 </div>
             </div>
         </header>
-    )
-}
+    );
+};
 
-export default HeaderAuth
+export default HeaderAuth;
