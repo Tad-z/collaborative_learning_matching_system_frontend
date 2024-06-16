@@ -1,21 +1,24 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import ApiCall, { getError } from '../helpers/api';
+import axios from 'axios';
 import { toast } from 'react-toastify';
+import { getError } from '../helpers/api';
 
 const HeaderAuth = ({ title }) => {
     const clickHandler = async () => {
         try {
-            const response = await ApiCall.getMethod(`http://localhost:8000/group/download-groups/${title}`);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
+            const response = await axios.get(`http://localhost:8000/group/download-groups/${title}`, {
+                responseType: 'blob', // Important to indicate that the response is a blob
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${title}_groups.xlsx`;
+            a.download = `${title}.xlsx`;
             document.body.appendChild(a);
             a.click();
-            a.remove();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
         } catch (err) {
             toast.error(getError(err));
         }
