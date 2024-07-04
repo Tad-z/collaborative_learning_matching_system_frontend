@@ -12,10 +12,10 @@ const Header = ({ title }) => {
             </Helmet>
             <div className="navbar">
                 <div>
-                    <img src={logo} alt="Collab logo" width={110} height={40} />
+                    <Link to="/" ><img src={logo} alt="Collab logo" width={110} height={40} /></Link>
                 </div>
                 <div>
-                    <Link to="/login" className='loginButton text-sm text-white'>Get Started</Link>
+                    <Link to="/login" ><p className='loginButton text-sm text-white'>Get Started</p></Link>
                 </div>
             </div>
         </header>
