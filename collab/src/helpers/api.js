@@ -20,9 +20,12 @@ export default class ApiCall {
       }
   }
 
-const getError = (err) =>
-err.response && err.response.data && err.response.data.message
-    ? err.response.data.message
-    : err.message
+const getError = (err) => {
+    if (err.response && err.response.data && err.response.data.detail) {
+      return err.response.data.detail;
+    }
+    return err.message;
+}
+  
 
 export { getError }

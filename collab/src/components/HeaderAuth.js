@@ -1,9 +1,11 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getError } from '../helpers/api';
+import logo from '../assets/collabee.png';
 
 const HeaderAuth = ({ title }) => {
     const clickHandler = async () => {
@@ -26,9 +28,12 @@ const HeaderAuth = ({ title }) => {
 
     return (
         <header>
+            <Helmet>
+                <title>{title ? `${title} - COLLAB` : 'COLLAB'}</title>
+            </Helmet>
             <div className="navbar">
                 <div>
-                    <Link to="/" className='text-2xl font-bold'>CollabLearn</Link>
+                    <Link to="/" ><img src={logo} alt="Collab logo" width={110} height={40} /></Link>
                 </div>
                 <div>
                     <button onClick={clickHandler} className='loginButton text-sm text-white'>Download</button>
