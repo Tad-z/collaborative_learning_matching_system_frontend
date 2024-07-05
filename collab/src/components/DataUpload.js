@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ApiCall, { getError } from "../helpers/api";
-import Header from "./Header";
+import Header from "./HeaderAuth";
 import "./Login.css";
 
 export default function UploadScreen() {
+  const location = useLocation();
+  const l = location.state;
+  const name = l.name
   const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
@@ -57,7 +60,7 @@ export default function UploadScreen() {
 
   return (
     <div className="body">
-      <Header title="upload" />
+      <Header title="upload" name={name} />
       <div className="container">
         <h1 className="h1">Data Upload</h1>
         <p className="p">Upload your data</p>

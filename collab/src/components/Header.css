@@ -53,3 +53,9 @@
   .loginButton:active {
     background-color: #76592e;
   }
+
+  @media (max-width: 450px) { 
+    .loginButton {
+      font-size: 15px;
+    }
+  }

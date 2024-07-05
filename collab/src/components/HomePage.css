@@ -56,3 +56,45 @@
     background-color: #f7f7f1;
     color: #5e4c34;
   }
+
+@media (max-width: 450px) { 
+  .header { 
+    background-image: linear-gradient(rgba(90, 89, 89, 0.2),
+    rgba(57, 56, 56, 0.2)),  url(../../public/mobile2.jpg);
+  }
+
+  .headerContainer {
+    /* height: 100%;
+    display: flex;
+    max-width: 100%; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: end;
+    /* margin-left: 2rem; */
+  }
+  
+  .headerContainerInner {
+    width: 100%;
+    /* margin-bottom: 10rem; */
+    /* color: #f7f7f1; */
+  }
+  
+  .headerContainerInner h1 {
+    font-size: 2.5rem;
+    /* font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem; */
+  }
+  
+  .headerContainerInner p {
+    font-size: 18px;
+    /* font-weight: 500;
+    margin-bottom: 2rem; */
+  }
+
+  .btn {
+    margin-bottom: 2rem;
+  }
+  
+}

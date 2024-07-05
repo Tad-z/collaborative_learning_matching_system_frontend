@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import GroupList from './GroupList';
 import './GroupList.css';
-import HeaderAuth from './HeaderAuth';
+import HeaderAuth from './HeaderDisplay';
 
 const Display = () => {
   const location = useLocation();

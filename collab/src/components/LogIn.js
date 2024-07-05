@@ -23,12 +23,12 @@ export default function LoginScreen() {
         email,
         password,
       });
-      console.log(result.access_token)
       if (result && result.access_token) {
+        const name = result.name
         localStorage.setItem("token", result.access_token);
         // localStorage.setItem("user", JSON.stringify(result.data.user));
         toast.success("Login successful");
-        navigate("/upload");
+        navigate("/upload", { state: { name }});
       } else {
         toast.error("Login failed");
       }
