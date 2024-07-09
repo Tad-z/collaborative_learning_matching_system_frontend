@@ -20,7 +20,7 @@ const SignUp = () => {
   const submitHandler = async ({ email, fullname, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod("http://localhost:8000/user/register", {
+      const result = await ApiCall.postMethod("https://kind-ruth-tade-9750797e.koyeb.app/user/register", {
         fullname,
         email,
         password,

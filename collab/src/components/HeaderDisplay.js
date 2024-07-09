@@ -10,7 +10,7 @@ import logo from '../assets/collabee.png';
 const HeaderAuth = ({ title }) => {
     const clickHandler = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/group/download-groups/${title}`, {
+            const response = await axios.get(`https://kind-ruth-tade-9750797e.koyeb.app/group/download-groups/${title}`, {
                 responseType: 'blob', // Important to indicate that the response is a blob
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));

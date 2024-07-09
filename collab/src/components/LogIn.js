@@ -19,7 +19,7 @@ export default function LoginScreen() {
   const submitHandler = async ({ email, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod("http://localhost:8000/user/login", {
+      const result = await ApiCall.postMethod("https://kind-ruth-tade-9750797e.koyeb.app/user/login", {
         email,
         password,
       });

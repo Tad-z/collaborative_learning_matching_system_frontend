@@ -35,7 +35,7 @@ export default function UploadScreen() {
       formData.append("file", data.file[0]);
       formData.append("title", data.title);
       const response = await ApiCall.postMethod(
-        "http://localhost:8000/group/balanced-groups/",
+        "https://kind-ruth-tade-9750797e.koyeb.app/group/balanced-groups/",
         formData,
         {
           headers: {
