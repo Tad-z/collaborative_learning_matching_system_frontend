@@ -1,7 +1,7 @@
 .header {
     height: 100vh;
-    background-image: linear-gradient(rgba(90, 89, 89, 0.2),
-    rgba(57, 56, 56, 0.2)),  url(../../public/collab7.jpg);
+    background-image: linear-gradient(rgba(73, 72, 72, 0.2),
+    rgba(43, 42, 42, 0.2)),  url(../../public/collab7.jpg);
     background-size: cover;
     max-width: 100%;
     background-repeat: no-repeat;
@@ -44,6 +44,7 @@
     font-size: 20px;
     font-weight: 600;
     background-color: #5e4c34;
+    transition: all 0.2s ease-in-out;
     color: #f7f7f1;
     text-decoration: none;
     display: inline-block;
