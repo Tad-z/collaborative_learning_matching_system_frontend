@@ -20,7 +20,7 @@ const SignUp = () => {
   const submitHandler = async ({ email, fullname, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod("https://kind-ruth-tade-9750797e.koyeb.app/user/register", {
+      const result = await ApiCall.postMethod("https://collab-api-lbtk.onrender.com/user/register", {
         fullname,
         email,
         password,

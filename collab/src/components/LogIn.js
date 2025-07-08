@@ -19,7 +19,7 @@ export default function LoginScreen() {
   const submitHandler = async ({ email, password }) => {
     try {
       setIsLoading(true);
-      const result = await ApiCall.postMethod("https://kind-ruth-tade-9750797e.koyeb.app/user/login", {
+      const result = await ApiCall.postMethod("https://collab-api-lbtk.onrender.com/user/login", {
         email,
         password,
       });

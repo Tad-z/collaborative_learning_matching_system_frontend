@@ -35,7 +35,7 @@ export default function UploadScreen() {
       formData.append("file", data.file[0]);
       formData.append("title", data.title);
       const response = await ApiCall.postMethod(
-        "https://kind-ruth-tade-9750797e.koyeb.app/group/balanced-groups/",
+        "https://collab-api-lbtk.onrender.com/group/balanced-groups/",
         formData,
         {
           headers: {
